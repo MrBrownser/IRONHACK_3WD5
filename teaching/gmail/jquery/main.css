@@ -272,3 +272,7 @@ body{
 .closeInside{
     text-align: right;
 }
+
+.mailBadge{
+    margin: 5px;
+}

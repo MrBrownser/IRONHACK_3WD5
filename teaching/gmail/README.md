@@ -6,6 +6,8 @@ OK - Check for new email functionality to retrieve the new emails.
 OK - Retrieve all the email, because when we get the list of emails we only receive the headers.
 OK - Create and send a new email.
 OK - Starred an email in order to show the importance of that email.
+   - Check the number of mails from every label
+   - Check the mails from each label
 - Select all emails and add some operations with the selection.
 - Archive an email in order to hide this email.
 - Add a label to an email.

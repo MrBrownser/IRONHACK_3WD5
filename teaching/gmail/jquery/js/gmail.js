@@ -2,6 +2,36 @@ $(document).ready(function(){
 
 	var SERVER = 'https://vast-earth-2490.herokuapp.com';
 
+// ######################### Label import #########################
+
+	function import_labels(){
+		url = SERVER + "/labels"
+		$.get(url, write_labels);
+	};
+
+	function write_labels(labels_response){
+		$.each(labels_response, assign_label);
+	};
+
+	function assign_label(index, label_content){
+		switch (index){
+			case "friends":
+				$("#friends").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
+			break;
+			case "professional":
+				$("#professional").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
+			break;
+			case "events":
+				$("#events").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
+			break;
+			case "things":
+				$("#things").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
+			break;
+		}
+	};
+
+	import_labels();
+
 // ######################### CHECK NEW EMAILS #########################
 	
 	$("#check-emails").bind("click", check_new_emails);
@@ -115,5 +145,8 @@ $(document).ready(function(){
 
 
 // ######################### CHECK! #########################
+
+// TODO
+
 
 });
