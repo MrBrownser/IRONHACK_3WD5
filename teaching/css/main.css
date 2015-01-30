@@ -1,0 +1,14 @@
+div {
+    margin: 5px;
+}
+#result {
+    float: left;
+    width: 450px;
+    margin-top: -15px;
+}
+#exercices {
+    float:left;
+    width: 400px;
+}
+
+

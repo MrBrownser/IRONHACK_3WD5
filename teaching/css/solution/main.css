@@ -1,0 +1,87 @@
+div {
+    margin: 5px;
+}
+#result {
+    float: left;
+    width: 450px;
+    margin-top: -15px;
+}
+#exercices {
+    float:left;
+    width: 400px;
+}
+
+
+/* Exercice 1 */
+#ex1 {
+    font-weight: bold;
+    text-align: right;
+    border: solid red;
+}
+/* Exercice 2 */
+#ex2 {
+    font-size: 1.5em;
+    border: dashed thin;
+}
+
+/* Exercice 3 */
+#ex3 {
+    font-style: italic;
+    border: dotted;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+/* Exercice 4 */
+#ex4 {
+    color: blue;
+    border-left: double green;
+    margin-left: 20px;
+    padding: 0px 5px;
+}
+
+/* Exercice 5 */
+#ex5 {
+    text-decoration: underline;
+    padding: 20px;
+    border: 1px solid;
+}
+
+/* Exercice 6 */
+#ex6 {
+    text-indent: 20px;
+    margin: 20px;
+    background-color: aqua;
+}
+
+/* Exercice 7 */
+#ex7 {
+    text-align: justify;
+    width: 200px;
+    text-decoration: line-through;
+}
+
+/* Exercice 8 */
+#ex8 {
+    visibility: hidden;
+}
+
+/* Exercice 9 */
+#ex9 {
+    background-image: url('../logo.png');
+    background-repeat: no-repeat;
+    background-color: grey;
+    background-size: 100px;
+    background-position: right        ;
+    padding-right: 100px;
+}
+
+/* Exercice 10 */
+#ex10 {
+    text-transform: capitalize;
+    height: 100px;
+    overflow: auto;
+    border: 1px solid;
+}
+
+
