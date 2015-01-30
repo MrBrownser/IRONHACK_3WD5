@@ -2,9 +2,9 @@
 ## Goal
 Simulate the GMail frontend app. We can to develop some functionality like:
 
-- Check for new email functionality to retrieve the new emails.
-- Retrieve all the email, because when we get the list of emails we only receive the headers.
-- Create and send a new email.
+OK - Check for new email functionality to retrieve the new emails.
+OK - Retrieve all the email, because when we get the list of emails we only receive the headers.
+OK - Create and send a new email.
 - Starred an email in order to show the importance of that email.
 - Select all emails and add some operations with the selection.
 - Archive an email in order to hide this email.

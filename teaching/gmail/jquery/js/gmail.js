@@ -7,8 +7,12 @@ $(document).ready(function(){
 	$("#check-emails").bind("click", check_new_emails);
 
 	function check_new_emails(){
+		$("#readEmail").css("display", "none");
+		// $("#emails").prepend("<li id='loadingNotif'>Retrieving data from server...</li>");
+		clean_notifications();
+		$("#notifications").append("<div><p> Retrieving data from server... </p></div>");
+
 		var url = SERVER + '/email/new';
-		$("#emails").prepend("<li id='loadingNotif'>Retrieving data from server...</li>");
 		$.get(url, show_emails);
 	};
 
@@ -25,10 +29,12 @@ $(document).ready(function(){
 		string_email += "</div>";
 		string_email += "</li>";
 		$("#emails").prepend(string_email);
+		clean_notifications();
 	};
 
 	function show_emails(received_data){
-		$("#loadingNotif").remove();
+		// $("#loadingNotif").remove();
+		clean_notifications();
 		if ( (Object.keys(received_data).length) > 0 ){
 			for (var key in received_data){
 				if (received_data.hasOwnProperty(key) ){
@@ -39,17 +45,57 @@ $(document).ready(function(){
 			//CSS PONER MENSAJE DE AVISO/ERROR CON BOOTSTRAP - NO HAY MENSAJES PENDIENTES
 			// $("#emails").append("<li>No emails to show<br>(Tip: Click again...)</li>");
 		}
-		// $("#emails").append() mejor poner otra funcion que escriba los correos.
 	};
+
+	function clean_notifications(){
+		$("#notifications").children().remove();
+	}
 
 // ######################### CHECK A CONCRETE EMAIL #########################
 
-	$("#emails li").bind("click", check_email);
+	$("#emails").delegate("li", "click", check_email);
 
 	function check_email(){
-		console.log($(this));
-		// var url = SERVER + "/email/" + $(this).;
-	}
-		
+		var url = SERVER + "/email/" + $(this).attr("data-id");
+		$.get(url, show_email);
+	};
+
+	function show_email(dataReceived){
+		$("#readEmail").css("display", "inherit");
+		$("#readEmail .fromInside").text(dataReceived.from);
+		$("#readEmail .subjectInside").text(dataReceived.subject);
+		$("#readEmail .allEmailText").text(dataReceived.email);
+	};
+
+// ######################### CREATE AND SEND A NEW EMAIL #########################
+
+	$("#compose").bind("click", create_new_email);
+	$("#blank-close").bind("click", reset_and_close_form);
+	$("#trash").bind("click", reset_and_close_form);
+	
+	function reset_and_close_form(){
+		$("#new_email")[0].reset();
+		$("#blank-email").css("display", "none");
+	};
+
+	function create_new_email(){
+		reset_and_close_form();
+		$("#blank-email").css("display", "inherit");
+	};
+
+	$("#send").bind("click", send_mail);
+
+	function send_mail(){
+		clean_notifications();
+		$("#notifications").append("<div><p> Sending new email, wait please... </p></div>");
+		var new_email = $("#new_email").serialize();
+		$.post(SERVER + "/email", new_email, process_response);
+		reset_and_close_form();
+	};
+
+	function process_response(post_response){
+		clean_notifications();
+		$("#notifications").append("<div><p>" + post_response + "</p></div>");
+	};
 
 });
