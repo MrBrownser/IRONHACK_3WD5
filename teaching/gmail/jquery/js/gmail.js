@@ -14,20 +14,7 @@ $(document).ready(function(){
 	};
 
 	function assign_label(index, label_content){
-		switch (index){
-			case "friends":
-				$("#friends").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
-			break;
-			case "professional":
-				$("#professional").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
-			break;
-			case "events":
-				$("#events").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
-			break;
-			case "things":
-				$("#things").append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
-			break;
-		}
+		$("#" + index).append("<span class='badge mailBadge'>" + label_content.unread + "</span>");
 	};
 
 	import_labels();
@@ -144,9 +131,21 @@ $(document).ready(function(){
 	};
 
 
-// ######################### CHECK! #########################
+// ######################### TOGGLE CHECK! #########################
 
 // TODO
 
+// ######################### SELECT A LABEL #########################
+
+	// $("#personal-labels li").bind("click", show_label_mails);
+
+	// function show_label_mails(){
+	// 	url = SERVER + "/labels/" + $(this).prop("id");
+	// 	$.get(url, write_labels);
+	// };
+
+	// function write_labels(received_label_data){
+			
+	// };
 
 });
