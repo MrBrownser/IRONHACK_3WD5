@@ -171,12 +171,18 @@ body{
     cursor: pointer;
 }
 
-.starred{
+.star{
     background-image: url(images/star4.png);
     background-repeat: no-repeat;
     width: 19px;
     height: 19px;
     float: left;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.starred{
+    background-image: url(images/star-lit4.png);
 }
 
 .contentInfo{
@@ -261,4 +267,8 @@ body{
     font-size: 12px;
     line-height: 24px;
     text-align: justify;
+}
+
+.closeInside{
+    text-align: right;
 }

@@ -20,7 +20,7 @@ $(document).ready(function(){
 		var string_email = "<li data-id='" + id + "' class='clearfix'>";
 		string_email += "<div class='selectors'>";
 		string_email += "<div class='checked' role='checkBox' data-checked='false'></div>";
-		string_email += "<div class='starred' data-starred='true'></div>";
+		string_email += "<div class='star'></div>";
 		string_email += "</div>";
 		string_email += "<div class='contentInfo'>";
 		string_email += "<div class='from'>" + mail.from + "</div>";
@@ -54,6 +54,7 @@ $(document).ready(function(){
 // ######################### CHECK A CONCRETE EMAIL #########################
 
 	$("#emails").delegate("li", "click", check_email);
+	$("#closeButton").bind("click", close_view);
 
 	function check_email(){
 		var url = SERVER + "/email/" + $(this).attr("data-id");
@@ -67,9 +68,14 @@ $(document).ready(function(){
 		$("#readEmail .allEmailText").text(dataReceived.email);
 	};
 
+	function close_view(){
+		$("#readEmail").css("display", "none");
+	}
+
 // ######################### CREATE AND SEND A NEW EMAIL #########################
 
 	$("#compose").bind("click", create_new_email);
+	
 	$("#blank-close").bind("click", reset_and_close_form);
 	$("#trash").bind("click", reset_and_close_form);
 	
@@ -97,5 +103,17 @@ $(document).ready(function(){
 		clean_notifications();
 		$("#notifications").append("<div><p>" + post_response + "</p></div>");
 	};
+
+// ######################### STAR AN EMAIL #########################
+	
+	$("#emails").delegate(".star", "click", change_star);
+
+	function change_star(event){
+		$(this).toggleClass("starred");
+		event.stopPropagation();
+	};
+
+
+// ######################### CHECK! #########################
 
 });
